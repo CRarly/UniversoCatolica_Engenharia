@@ -1,0 +1,9 @@
+﻿id;name;score;correct;errors;elapsed;completed;playedAt;projectName;projectParts
+"10fe0125-74a2-42ba-926a-4608ad0f27e0";"Valicia";"10260";"6";"0";"54";"true";"2026-09-03T20:04:43.880Z";"Casa compacta";"6"
+"82ad9360-bde8-4ab3-9c83-15dee20f5b85";"Matheus";"10180";"6";"0";"56";"true";"2026-09-03T21:10:55.259Z";"Posto de apoio";"6"
+"f95f3b06-2f47-4abd-be78-c0d2830896a2";"Beatriz";"10160";"6";"0";"57";"true";"2026-09-03T20:24:30.586Z";"Posto de apoio";"6"
+"a2252933-5a9b-4db1-bd20-78d5a7289938";"Beatriz";"1980";"2";"2";"64";"false";"2026-09-03T20:19:43.752Z";"Posto de apoio";"6"
+"54f813e9-7e33-428b-9544-07aac75557ed";"Beatriz";"880";"1";"1";"47";"false";"2026-09-03T20:18:11.015Z";"Posto de apoio";"6"
+"323d9bee-0e64-4503-93b3-d2774076eca1";"Teste";"0";"0";"1";"2";"false";"2026-09-03T18:43:56.350Z";"Casa compacta";"6"
+"8c59555d-faf9-4024-908f-4c21833501ed";"Teste";"0";"0";"1";"9";"false";"2026-09-03T18:44:19.397Z";"Casa compacta";"6"
+"19d2ba96-db2d-47ee-af35-56efd309a0e6";"teste2";"0";"0";"1";"24";"false";"2026-09-03T18:44:56.822Z";"Sobrado familiar";"8"
