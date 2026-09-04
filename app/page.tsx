@@ -904,8 +904,22 @@ export default function Home() {
         if (!response.ok) throw new Error("Ranking indisponível");
         return response.json() as Promise<RankingEntry[]>;
       })
-      .then((entries) => setRanking(entries))
-      .catch(() => setRanking([]));
+      .then((entries) => {
+        setRanking(entries);
+        try {
+          localStorage.setItem("desafio_estrutural_ranking", JSON.stringify(entries));
+        } catch {}
+      })
+      .catch(() => {
+        try {
+          const cached = localStorage.getItem("desafio_estrutural_ranking");
+          if (cached) {
+            setRanking(JSON.parse(cached));
+            return;
+          }
+        } catch {}
+        setRanking([]);
+      });
   }, []);
 
   const clearScheduled = () => {
@@ -981,10 +995,19 @@ export default function Home() {
       if (!response.ok) throw new Error("Não foi possível salvar o resultado");
       updated = await response.json() as RankingEntry[];
     } catch {
-      updated = [...ranking, entry]
+      let currentCached: RankingEntry[] = [];
+      try {
+        const raw = localStorage.getItem("desafio_estrutural_ranking");
+        if (raw) currentCached = JSON.parse(raw);
+      } catch {}
+      const base = currentCached.length > 0 ? currentCached : ranking;
+      updated = [...base, entry]
         .sort((a, b) => b.score - a.score || a.errors - b.errors || a.elapsed - b.elapsed)
         .slice(0, 100);
     }
+    try {
+      localStorage.setItem("desafio_estrutural_ranking", JSON.stringify(updated));
+    } catch {}
     setRanking(updated);
     const projectRanking = updated.filter((item) => item.projectName === selectedProject.name);
     setLastPlacement(projectRanking.findIndex((item) => item.id === entry.id) + 1);

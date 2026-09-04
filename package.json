@@ -16,6 +16,9 @@
     "build:app": "next build",
     "electron": "electron .",
     "dist:win": "next build && electron-builder --win --x64",
+    "cap:sync": "next build && cap sync",
+    "cap:android": "cap open android",
+    "cap:ios": "cap open ios",
     "start": "WRANGLER_LOG_PATH=.wrangler/wrangler.log vinext start",
     "test": "npm run build && node --test tests/*.test.mjs",
     "lint": "bash scripts/sites-env.sh -- eslint . --ignore-pattern dist --ignore-pattern .next",
@@ -23,6 +26,9 @@
   },
   "dependencies": {
     "@base-ui/react": "^1.7.0",
+    "@capacitor/android": "^8.5.1",
+    "@capacitor/core": "^8.5.1",
+    "@capacitor/ios": "^8.5.1",
     "@hookform/resolvers": "^5.7.1",
     "@shadcn/react": "^0.3.0",
     "class-variance-authority": "0.7.1",
@@ -48,6 +54,7 @@
     "zod": "^3.25.76"
   },
   "devDependencies": {
+    "@capacitor/cli": "^8.5.1",
     "@cloudflare/vite-plugin": "1.37.1",
     "@tailwindcss/postcss": "4.2.1",
     "@types/node": "22.19.19",

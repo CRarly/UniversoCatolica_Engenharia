@@ -1,0 +1,7 @@
+<?xml version='1.0' encoding='utf-8'?>
+<resources>
+    <string name="app_name">Desafio Estrutural</string>
+    <string name="title_activity_main">Desafio Estrutural</string>
+    <string name="package_name">br.edu.ucb.desafioestrutural</string>
+    <string name="custom_url_scheme">br.edu.ucb.desafioestrutural</string>
+</resources>
