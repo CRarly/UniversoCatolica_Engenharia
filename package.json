@@ -1,15 +1,21 @@
 {
   "name": "desafio-estrutural-ucb",
   "version": "2.0.0",
+  "description": "Desafio Estrutural - Jogo educativo de Engenharia Civil",
+  "author": "Universo Católica",
   "private": true,
   "engines": {
     "node": ">=22.13.0"
   },
+  "main": "electron/main.mjs",
   "scripts": {
     "install:ci": "bash scripts/install-ci.sh",
     "dev": "WRANGLER_LOG_PATH=.wrangler/wrangler.log vite",
     "dev:local": "node scripts/local-runner.mjs",
     "build": "bash scripts/build-verified.sh",
+    "build:app": "next build",
+    "electron": "electron .",
+    "dist:win": "next build && electron-builder --win --x64",
     "start": "WRANGLER_LOG_PATH=.wrangler/wrangler.log vinext start",
     "test": "npm run build && node --test tests/*.test.mjs",
     "lint": "bash scripts/sites-env.sh -- eslint . --ignore-pattern dist --ignore-pattern .next",
@@ -50,6 +56,8 @@
     "@vitejs/plugin-react": "6.0.2",
     "@vitejs/plugin-rsc": "0.5.26",
     "drizzle-kit": "0.31.10",
+    "electron": "^44.1.1",
+    "electron-builder": "^26.15.3",
     "eslint": "9.39.4",
     "eslint-config-next": "16.2.6",
     "react-server-dom-webpack": "19.2.6",
@@ -60,5 +68,30 @@
     "vite": "8.0.13",
     "wrangler": "4.92.0"
   },
-  "type": "module"
+  "type": "module",
+  "build": {
+    "appId": "br.edu.ucb.desafioestrutural",
+    "productName": "Desafio Estrutural - Engenharia Civil",
+    "directories": {
+      "output": "dist-electron"
+    },
+    "files": [
+      "electron/**/*",
+      "out/**/*",
+      "public/**/*"
+    ],
+    "win": {
+      "target": [
+        "nsis"
+      ],
+      "icon": "electron/icon.ico"
+    },
+    "nsis": {
+      "oneClick": false,
+      "allowToChangeInstallationDirectory": true,
+      "createDesktopShortcut": true,
+      "createStartMenuShortcut": true,
+      "shortcutName": "Desafio Estrutural - Engenharia Civil"
+    }
+  }
 }
